@@ -11,7 +11,7 @@
     <meta name="format-detection" content="telephone=no" />
 
     <meta name="csrf-param" content="authenticity_token" />
-<meta name="csrf-token" content="DJy2lY9yihaMxIl9xTDMy03IAjMue51X4vfKPQs0NovaazY6dC9uMwaNdaYThhd29TP4HvKVOAo5yvymp90TLw==" />
+<meta name="csrf-token" content="+/CcrDR7kYFbLYo1BmjLaMorVRJ842gsQLhB5oZSqQj58CCoZynIV2I2PAZU/efYHQMLbLu16jQu7Ay1homBvw==" />
     
     <link rel="stylesheet" type="text/css" href="css/index.css" />
     <script type="text/javascript" src="cordova.js"></script>
@@ -64,7 +64,10 @@
   <div id="profile">
   <div class="row pt25">
     <div class="col-sm-3 hide_sm">
-      <div class="content_img_scheda "><img src="https://www.jewelryvirtualfair.com/public/logo-page/{{ctl.space.info.logo_page}}" class="img-responsive" alt="{{ctl.space.title}}"></div>
+      <div class="content_img_scheda ">
+        <img src="https://www.jewelryvirtualfair.com/public/logo-page/{{ctl.space.info.logo_page}}"
+          class="img-responsive" alt="{{ctl.space.title}}" />
+      </div>
     </div>
     <div class="col-sm-9">
       <h1 class="h1_scheda">{{ctl.space.title}}</h1>
@@ -73,7 +76,7 @@
     </div>
   </div>
   <h5 class="h5_scheda j_height_des" ng-bind-html="ctl.space.info.des_page | to_trusted"></h5>
-  <br><br>
+  <br /><br />
   <!-- div class="contatta_scheda" >
     <strong>Contatta</strong> {{ctl.space.title}}
   </div -->
@@ -89,15 +92,15 @@
     </tbody></table -->
     <div class="content_dati_scheda">
         <strong>Nazione:</strong>
-          {{ctl.space.info.nazione || 'Italia'}}<br>
+          {{ctl.space.info.nazione || 'Italia'}}<br />
         <strong>Città:</strong>
           {{ctl.space.info.citta}} - 
-          {{ctl.space.info.cap}}<br>
+          {{ctl.space.info.cap}}<br />
         <strong>Indirizzo:</strong>
-          {{ctl.space.info.indirizzo}}<br>
-        <br>
+          {{ctl.space.info.indirizzo}}<br />
+        <br />
         <strong>Tel.</strong>
-          {{ctl.space.info.nr_telefono}}<br>
+          {{ctl.space.info.nr_telefono}}<br />
         
         <a class="www_scheda" href="http://{{ctl.space.info.sito_internet}}" target="_blank">
           https://{{ctl.space.info.sito_internet}}
@@ -128,7 +131,7 @@
     <div class="col-md-4 col-6" ng-repeat="p in ctl.space.products">
       <a href="#" class="href_art">
         <img src="https://www.jewelryvirtualfair.com/public/prod-page/{{p.photo_galleries[0].nome_foto}}"
-        class="img-responsive bordered_f0 " alt="JVF">
+        class="img-responsive bordered_f0 " alt="JVF" />
         <h3>{{p.nome_prodotto}}</h3>
         <!-- div class="prezzo_scat">€ 12,00</div -->
       </a>
@@ -146,7 +149,7 @@
   <div class="owl-item cloned">
     <div class="item" ng-repeat="g in ctl.space.gallery">
       <img src="https://www.jewelryvirtualfair.com/public/gallery-page/{{g.nome_foto}}"
-        class="img-responsive" alt="{{ctl.space.title}}">
+        class="img-responsive" alt="{{ctl.space.title}}" />
       <br />
     </div>
   </div>
@@ -178,7 +181,7 @@
         </div>
     </div -->
     {{p.languages[0].des_annuncio}}
-    <img src="https://www.jewelryvirtualfair.com/public/post-image/{{p.immagine_1}}" class="img-responsive mt-3" alt="JVF">
+    <img src="https://www.jewelryvirtualfair.com/public/post-image/{{p.immagine_1}}" class="img-responsive mt-3" alt="JVF" />
     
     <!--div class="content_action_post">
         <div class="action_post_icon no_cp"><i class="fa fa-heart-o"></i> 10&nbsp;Mi piace</div>
