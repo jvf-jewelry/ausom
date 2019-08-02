@@ -13,9 +13,6 @@
         "cordova-plugin-camera": {
             "PACKAGE_NAME": "net.serendpt.ausom"
         },
-        "cordova-plugin-media-capture": {
-            "PACKAGE_NAME": "net.serendpt.ausom"
-        },
         "cordova-plugin-console": {
             "PACKAGE_NAME": "net.serendpt.ausom"
         },
@@ -47,6 +44,9 @@
             "PACKAGE_NAME": "net.serendpt.ausom"
         },
         "cordova-plugin-media": {
+            "PACKAGE_NAME": "net.serendpt.ausom"
+        },
+        "cordova-plugin-media-capture": {
             "PACKAGE_NAME": "net.serendpt.ausom"
         },
         "cordova-plugin-network-information": {
