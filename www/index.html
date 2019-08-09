@@ -46,6 +46,18 @@
         padding-top: 12px;
         cursor: pointer;
       }
+      #imgpop{
+        position: fixed;
+        left: 50%;
+        top: 20%;
+        transform: translate(-50%, -50%);
+        background-color: white;
+        color:white;
+        height: 400px;
+        display:none;
+        width: 80%;
+        z-index: 15;
+      }
     </style>
   </head>
 
@@ -123,22 +135,23 @@
 </script>
 <script type="text/ng-template" id="partials/showroom.html">
   <div id="showroom">
-  <br />
-  <h1 class="h1_scheda">Show-Room</h1>
-  <br />
+    <br />
+    <h1 class="h1_scheda">Show-Room</h1>
+    <br />
 
-  <div class="row">
-    <div class="col-md-4 col-6" ng-repeat="p in ctl.space.products">
-      <a href="#" class="href_art">
-        <img src="https://www.jewelryvirtualfair.com/public/prod-page/{{p.photo_galleries[0].nome_foto}}"
-        class="img-responsive bordered_f0 " alt="JVF" />
-        <h3>{{p.nome_prodotto}}</h3>
-        <!-- div class="prezzo_scat">€ 12,00</div -->
-      </a>
+    <div class="row">
+      <div class="col-md-4 col-6" ng-repeat="p in ctl.space.products">
+        <a href="" class="href_art">
+          <img ng-click='ctl.showPop(p)' src="https://www.jewelryvirtualfair.com/public/prod-page/{{p.photo_galleries[0].nome_foto}}" class="img-responsive bordered_f0 " alt="JVF" />
+          <h3>{{p.nome_prodotto}}</h3>
+        </a>
+      </div>
     </div>
   </div>
-    
-</div>
+  
+  <div id="imgpop" ng-click="ctl.closePop()">
+    <img id="popcont" src="" class="img-responsive bordered_f0 " alt="JVF" />
+  </div>
 </script>
 <script type="text/ng-template" id="partials/gallery.html">
   <div id="gallery">
@@ -148,8 +161,7 @@
       
   <div class="owl-item cloned">
     <div class="item" ng-repeat="g in ctl.space.gallery">
-      <img src="https://www.jewelryvirtualfair.com/public/gallery-page/{{g.nome_foto}}"
-        class="img-responsive" alt="{{ctl.space.title}}" />
+      <img src="https://www.jewelryvirtualfair.com/public/gallery-page/{{g.nome_foto}}" class="img-responsive" alt="{{ctl.space.title}}" />
       <br />
     </div>
   </div>
@@ -190,7 +202,6 @@
 
 </div>
 </script>
-
     </div>
 
     <nav class="fixed-bottom jvf-menu">

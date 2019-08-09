@@ -10,12 +10,6 @@
         "cordova-plugin-battery-status": {
             "PACKAGE_NAME": "net.serendpt.ausom"
         },
-        "cordova-plugin-camera": {
-            "PACKAGE_NAME": "net.serendpt.ausom"
-        },
-        "cordova-plugin-console": {
-            "PACKAGE_NAME": "net.serendpt.ausom"
-        },
         "cordova-plugin-contacts": {
             "PACKAGE_NAME": "net.serendpt.ausom"
         },
@@ -31,22 +25,10 @@
         "cordova-plugin-dialogs": {
             "PACKAGE_NAME": "net.serendpt.ausom"
         },
-        "cordova-plugin-file-transfer": {
-            "PACKAGE_NAME": "net.serendpt.ausom"
-        },
-        "cordova-plugin-geolocation": {
-            "PACKAGE_NAME": "net.serendpt.ausom"
-        },
         "cordova-plugin-globalization": {
             "PACKAGE_NAME": "net.serendpt.ausom"
         },
         "cordova-plugin-inappbrowser": {
-            "PACKAGE_NAME": "net.serendpt.ausom"
-        },
-        "cordova-plugin-media": {
-            "PACKAGE_NAME": "net.serendpt.ausom"
-        },
-        "cordova-plugin-media-capture": {
             "PACKAGE_NAME": "net.serendpt.ausom"
         },
         "cordova-plugin-network-information": {
@@ -65,9 +47,5 @@
             "PACKAGE_NAME": "net.serendpt.ausom"
         }
     },
-    "dependent_plugins": {
-        "cordova-plugin-file": {
-            "PACKAGE_NAME": "net.serendpt.ausom"
-        }
-    }
+    "dependent_plugins": {}
 }
