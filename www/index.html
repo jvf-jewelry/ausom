@@ -11,7 +11,7 @@
     <meta name="format-detection" content="telephone=no" />
 
     <meta name="csrf-param" content="authenticity_token" />
-<meta name="csrf-token" content="+/CcrDR7kYFbLYo1BmjLaMorVRJ842gsQLhB5oZSqQj58CCoZynIV2I2PAZU/efYHQMLbLu16jQu7Ay1homBvw==" />
+<meta name="csrf-token" content="BHuYIouBBDNCERUC9MXYCN4/SWO7yr+ihxXM1metwecMzPWDNNCfsZPgVmCOBw+QzZDBz+P66lO//oALP7OlqA==" />
     
     <link rel="stylesheet" type="text/css" href="css/index.css" />
     <script type="text/javascript" src="cordova.js"></script>
@@ -46,52 +46,6 @@
         padding-top: 12px;
         cursor: pointer;
       }
-      #imgpop{
-        position: fixed;
-        left: 50%;
-        top: 30%;
-        transform: translate(-50%, -50%);
-        background-color: white;
-        color:white;
-        max-height: 450px;
-        display:none;
-        width: 80%;
-        z-index: 15;
-        
-      }
-      #imgpop #popcont{
-        border: 5px solid #aa165f;
-        border-radius: 10px;
-      }
-      #close{
-        position: fixed;
-        left: 89%;
-        top: -2%;
-        font-size: 40px;
-        color: #aa165f;
-        opacity: 100;
-      }
-      @media only screen and (min-device-width : 768px) and (max-device-width : 1024px)  { 
-        /* STYLES GO HERE */
-        #close{
-          left: 94%;
-          top: 0%;
-        }
-      }
-      @media only screen and (min-device-width : 375px) and (max-device-width : 812px) and (-webkit-device-pixel-ratio : 3) { 
-        /* STYLES GO HERE */
-        #close{
-          left: 88%;
-          top: 0%;
-        }
-      } 
-      @media only screen and (min-device-width : 375px) and (max-device-width : 667px) { 
-        /* STYLES GO HERE */
-        #close{
-          left: 88%;
-          top: 0%;
-        }
-      }
     </style>
   </head>
 
@@ -103,7 +57,7 @@
         Click here to retry
       </div>
     </div>
-    <div class="container" style="min-height: 100vh; padding-bottom: 55px;">
+    <div class="container" style="min-height: 100vh; padding-bottom: 80px;">
       <ng-view></ng-view>
 
 <script type="text/ng-template" id="partials/profile.html">
@@ -169,26 +123,30 @@
 </script>
 <script type="text/ng-template" id="partials/showroom.html">
   <div id="showroom">
-    <br />
-    <h1 class="h1_scheda">Show-Room</h1>
-    <br />
+  <br />
+  <h1 class="h1_scheda">Show-Room</h1>
+  <br />
 
-    <div class="row">
-      <div class="col-md-4 col-6" ng-repeat="p in ctl.space.products">
-        <a href="" class="href_art">
-          <img ng-click='ctl.showPop(p)' src="https://www.jewelryvirtualfair.com/public/prod-page/{{p.photo_galleries[0].nome_foto}}" class="img-responsive bordered_f0 " alt="JVF" />
-          <h3>{{p.nome_prodotto}}</h3>
-        </a>
-      </div>
+  <div class="row">
+    <div class="col-md-4 col-6" ng-repeat="p in ctl.space.products">
+      <a href="" class="href_art">
+        <img ng-click='ctl.showPop(p)' src="https://www.jewelryvirtualfair.com/public/prod-page/{{p.photo_galleries[0].nome_foto}}"
+        class="img-responsive bordered_f0 " alt="JVF" />
+        <h3>{{p.nome_prodotto}}</h3>
+        <!-- div class="prezzo_scat">€ 12,00</div -->
+      </a>
     </div>
-  </div>
+  </div>    
+</div>
 
-  <div id="imgpop" ng-click="ctl.closePop()">
-    <button id="close" type="button" class="close" aria-label="Close" style="color:#aa165f;">
+<div id="imgpop" ng-click="ctl.closePop()">
+  <div>
+    <button id="close" type="button" class="close" aria-label="Close">
       <span aria-hidden="true">&times;</span>
     </button>
     <img id="popcont" src="" class="img-responsive bordered_f0 " alt="JVF" />
   </div>
+</div>
 </script>
 <script type="text/ng-template" id="partials/gallery.html">
   <div id="gallery">
@@ -198,7 +156,8 @@
       
   <div class="owl-item cloned">
     <div class="item" ng-repeat="g in ctl.space.gallery">
-      <img src="https://www.jewelryvirtualfair.com/public/gallery-page/{{g.nome_foto}}" class="img-responsive" alt="{{ctl.space.title}}" />
+      <img src="https://www.jewelryvirtualfair.com/public/gallery-page/{{g.nome_foto}}"
+        class="img-responsive" alt="{{ctl.space.title}}" />
       <br />
     </div>
   </div>
@@ -239,6 +198,7 @@
 
 </div>
 </script>
+
     </div>
 
     <nav class="fixed-bottom jvf-menu">

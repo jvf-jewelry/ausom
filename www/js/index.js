@@ -2126,17 +2126,17 @@ app.controller("JvfController", function($scope, $route, $rootScope, $http, $coo
   };
 
   ctl.showPop = function(url){
-    console.log("opens");
     document.getElementById("imgpop").style.display = "inline-block";
     document.getElementById("popcont").src = "https://www.jewelryvirtualfair.com/public/prod-page/" + url.photo_galleries[0].nome_foto;
   };
   
   ctl.closePop = function(){
-    console.log("CLOSE!");
     document.getElementById("imgpop").style.display = "none";
   };
 
   ctl.assignSpace = function(space){
+    if (!space) return;
+    if (space.space_id != ctl.space_id) return;
     ctl.space = space;
     $('.jvf-menu li').hide();
     $('.jvf-menu .menu-profile').show();
