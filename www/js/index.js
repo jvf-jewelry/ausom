@@ -2190,7 +2190,7 @@ app.controller("JvfController", function($scope, $route, $rootScope, $http, $coo
     if (device.platform.toLowerCase() == "ios") {   
       url = "maps:" 
     } 
-    url + "?q=1.5149818510303,110.35436153412"; 
+    url + "?q="+ ctl.space.info.geo_lat + "," + ctl.space.info.geo_lon; 
     //window.location = 'geo:' + ctl.space.info.geo_lat + ',' + ctl.space.info.geo_lon;
     window.location = url;
   }
