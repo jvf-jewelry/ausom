@@ -2187,12 +2187,12 @@ app.controller("JvfController", function($scope, $route, $rootScope, $http, $coo
 
   ctl.loadMap = function(){
     var url = "http://maps.google.com/maps"; 
-    if (device.platform.toLowerCase() == "ios") {   
-      url = "maps:" 
-    } 
-    url + "?q="+ ctl.space.info.geo_lat + "," + ctl.space.info.geo_lon; 
-    //window.location = 'geo:' + ctl.space.info.geo_lat + ',' + ctl.space.info.geo_lon;
-    window.location = url;
+    if (app.is_cordova){
+      if (device.platform.toLowerCase() == "ios") {   
+        url = "maps:" ;
+      } 
+    }
+    window.location = url + "?q="+ ctl.space.info.geo_lat + "," + ctl.space.info.geo_lon;;
   }
 
   ctl.mainFunction = function(){
