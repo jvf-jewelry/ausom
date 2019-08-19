@@ -2184,9 +2184,15 @@ app.controller("JvfController", function($scope, $route, $rootScope, $http, $coo
       if (oncomplete) oncomplete();
     });
   }
-  
+
   ctl.loadMap = function(lat, lon){
-    window.location = 'geo:' + ctl.space.info.geo_lat + ',' + ctl.space.info.geo_lon;
+    if(device.platform.toLowerCase != 'android'){
+      window.location = 'maps:' + ctl.space.info.geo_lat + ',' + ctl.space.info.geo_lon;
+    } else {
+      window.location = 'geo:' + ctl.space.info.geo_lat + ',' + ctl.space.info.geo_lon;
+    } else {
+      console.log("Not supported")
+    }
   }
 
   ctl.mainFunction = function(){
