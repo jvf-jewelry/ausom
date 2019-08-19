@@ -2186,13 +2186,7 @@ app.controller("JvfController", function($scope, $route, $rootScope, $http, $coo
   }
 
   ctl.loadMap = function(){
-    if(device.platform.toLowerCase != 'android'){
-      window.location = 'maps:' + ctl.space.info.geo_lat + ',' + ctl.space.info.geo_lon;
-    } else {
-      window.location = 'geo:' + ctl.space.info.geo_lat + ',' + ctl.space.info.geo_lon;
-    } else {
-      console.log("Not supported")
-    }
+    window.location = 'geo:' + ctl.space.info.geo_lat + ',' + ctl.space.info.geo_lon;
   }
 
   ctl.mainFunction = function(){
