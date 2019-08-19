@@ -11,8 +11,8 @@
     <preference name="DisallowOverscroll" value="true" />
     <preference name="android-minSdkVersion" value="28" />
     <preference name="minSdkVersion" value="28" />
-    <preference name="phonegap-version" value="cli-8.0.0" />
     
+    <preference name="phonegap-version" value="cli-8.0.0" />
     <gap:plugin name="cordova-plugin-x-socialsharing" source="npm" />
 
     <plugin name="phonegap-plugin-push" source="npm" />
