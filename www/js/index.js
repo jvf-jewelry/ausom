@@ -2186,7 +2186,13 @@ app.controller("JvfController", function($scope, $route, $rootScope, $http, $coo
   }
 
   ctl.loadMap = function(){
-    window.location = 'geo:' + ctl.space.info.geo_lat + ',' + ctl.space.info.geo_lon;
+    var url = "http://maps.google.com/maps"; 
+    if (device.platform.toLowerCase() == "ios") {   
+      url = "maps:" 
+    } 
+    url + "?q=1.5149818510303,110.35436153412"; 
+    //window.location = 'geo:' + ctl.space.info.geo_lat + ',' + ctl.space.info.geo_lon;
+    window.location = url;
   }
 
   ctl.mainFunction = function(){
