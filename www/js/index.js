@@ -2192,6 +2192,7 @@ app.controller("JvfController", function($scope, $route, $rootScope, $http, $coo
         url = "maps://?q=:" ;
         window.open = cordova.InAppBrowser.open;
         window.open(url + ctl.space.info.geo_lat + "," + ctl.space.info.geo_lon, '_system');
+        return;
       } 
     }
     window.location = url + "?q="+ ctl.space.info.geo_lat + "," + ctl.space.info.geo_lon;
@@ -2214,8 +2215,7 @@ app.controller("JvfController", function($scope, $route, $rootScope, $http, $coo
     });
 
     push.on('registration', function(data) {
-      console.log('registration event: ' + data.registrationId);
-      alert(data.registrationId);
+      //console.log('registration event: ' + data.registrationId);
       var oldRegId = localStorage.getItem('registrationId');
       if (oldRegId !== data.registrationId) {
         // Save new registration ID
@@ -2225,8 +2225,7 @@ app.controller("JvfController", function($scope, $route, $rootScope, $http, $coo
     });
 
     push.on('notification', function(data) {
-      console.log('notification event');
-      alert(data.message);
+      //console.log('notification event');
       navigator.notification.alert(
         data.message,         // message
         null,                 // callback
@@ -2236,8 +2235,8 @@ app.controller("JvfController", function($scope, $route, $rootScope, $http, $coo
     });
 
     push.on('error', function(e) {
-      console.log(e);
-      // e.message
+      //console.log(e);
+      e.message
     });
   };
 
