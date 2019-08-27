@@ -2222,10 +2222,6 @@ app.controller("JvfController", function($scope, $route, $rootScope, $http, $coo
         localStorage.setItem('registrationId', data.registrationId);
         // Post registrationId to your app server as the value has changed
       }
-
-      var parentElement = document.getElementById('registration');
-      var listeningElement = parentElement.querySelector('.waiting');
-      var receivedElement = parentElement.querySelector('.received');
     });
 
     push.on('notification', function(data) {
