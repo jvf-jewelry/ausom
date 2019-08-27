@@ -2190,9 +2190,10 @@ app.controller("JvfController", function($scope, $route, $rootScope, $http, $coo
     if (app.is_cordova){
       if (device.platform.toLowerCase() == "ios") {   
         url = "maps:" ;
+        window.location = url + ctl.space.info.geo_lat + "," + ctl.space.info.geo_lon;
       } 
     }
-    window.location = url + "?q="+ ctl.space.info.geo_lat + "," + ctl.space.info.geo_lon;;
+    window.location = url + "?q="+ ctl.space.info.geo_lat + "," + ctl.space.info.geo_lon;
   }
 
   ctl.pushNotification = function(){
@@ -2274,6 +2275,8 @@ app.controller("JvfController", function($scope, $route, $rootScope, $http, $coo
       });
     }
 
+    ctl.pushNotification();
+    
     $timeout(function(){
       ctl.loadView();
       $rootScope.$on('$locationChangeSuccess', ctl.loadView);
