@@ -2189,7 +2189,7 @@ app.controller("JvfController", function($scope, $route, $rootScope, $http, $coo
     var url = "http://maps.google.com/maps"; 
     if (app.is_cordova){
       if (device.platform.toLowerCase() == "ios") {   
-        url = "maps:" ;
+        url = "maps://?q=:" ;
         window.location = url + ctl.space.info.geo_lat + "," + ctl.space.info.geo_lon;
       } 
     }
