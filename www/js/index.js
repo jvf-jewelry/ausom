@@ -2190,7 +2190,8 @@ app.controller("JvfController", function($scope, $route, $rootScope, $http, $coo
     if (app.is_cordova){
       if (device.platform.toLowerCase() == "ios") {   
         url = "maps://?q=:" ;
-        window.location = url + ctl.space.info.geo_lat + "," + ctl.space.info.geo_lon;
+        window.open = cordova.InAppBrowser.open;
+        window.open(url + ctl.space.info.geo_lat + "," + ctl.space.info.geo_lon, '_system');
       } 
     }
     window.location = url + "?q="+ ctl.space.info.geo_lat + "," + ctl.space.info.geo_lon;
