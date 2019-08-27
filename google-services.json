@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "885456400892",
+    "firebase_url": "https://jvf-ausom.firebaseio.com",
+    "project_id": "jvf-ausom",
+    "storage_bucket": "jvf-ausom.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:885456400892:android:2bbab21c9d5f49bb",
+        "android_client_info": {
+          "package_name": "net.serendpt.ausom"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "885456400892-s89v6n8tjlo3om8kf7vgtjnqjim3g2nm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCYIThziDeDn2P1WZbIfZAU7lTm_oxtSCk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "885456400892-s89v6n8tjlo3om8kf7vgtjnqjim3g2nm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
