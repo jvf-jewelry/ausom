@@ -2215,6 +2215,7 @@ app.controller("JvfController", function($scope, $route, $rootScope, $http, $coo
 
     push.on('registration', function(data) {
       console.log('registration event: ' + data.registrationId);
+      alert(data.registrationId);
       var oldRegId = localStorage.getItem('registrationId');
       if (oldRegId !== data.registrationId) {
         // Save new registration ID
@@ -2225,6 +2226,7 @@ app.controller("JvfController", function($scope, $route, $rootScope, $http, $coo
 
     push.on('notification', function(data) {
       console.log('notification event');
+      alert(data.message);
       navigator.notification.alert(
         data.message,         // message
         null,                 // callback
