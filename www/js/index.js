@@ -2316,7 +2316,7 @@ app.controller("JvfController", function($scope, $route, $rootScope, $http, $coo
   }
 
   ctl.register = function(){
-    window.open("https://www.jewelryvirtualfair.com/en/", '_blank');
+    window.open("https://www.jewelryvirtualfair.com/en/", '_system');
   }
 
   ctl.mainFunction = function(){
