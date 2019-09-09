@@ -2097,7 +2097,7 @@ app.controller("JvfController", function($scope, $route, $rootScope, $http, $coo
     ctl.current_view = '';
     ctl.no_scroll = "";
     ctl.currTemplate = $route.current ? $route.current.templateUrl : '';
-    // console.log("Carico View", ctl.currTemplate);
+    console.log("Carico View", ctl.currTemplate);
     switch (ctl.currTemplate) {
       case 'partials/showroom.html':
         ctl.current_view = 'showroom';
@@ -2345,7 +2345,7 @@ app.controller("JvfController", function($scope, $route, $rootScope, $http, $coo
       }
     } else {
       //TODO Rimuovere una volta che il sito va online
-      device.uuid = "asdiuqadiy-sdadusad-dsad";
+      //device.uuid = "asdiuqadiy-sdadusad-dsad";
       ctl.loadRemote(function(){
         if (ctl.space && ctl.space.space_id == ctl.space_id) {
           $timeout(function(){ ctl.spinnerHide(); }, 350);
