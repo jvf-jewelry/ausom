@@ -2449,12 +2449,12 @@ app.controller("JvfController", function($scope, $route, $rootScope, $http, $coo
     // if (app.is_cordova) app.cordova_startup(ctl,$http,$localStorage,$translate);
 
     ctl.space_id  = $('body').data('space_id');
-    ctl.space_url = "/api/" + ctl.space_id + "/space";
+    ctl.space_url = "http://www.jvf.jewelry/api/" + ctl.space_id + "/space";
 
     if (app.is_cordova) {
       window.open = cordova.InAppBrowser.open;
 
-      ctl.space_url = "http://www.jvf.jewelry" + ctl.space_url;
+      // ctl.space_url = "http://www.jvf.jewelry" + ctl.space_url;
       ctl.assignSpace($localStorage.$default({}));
       ctl.pushNotification();
       console.log(device.uuid);
