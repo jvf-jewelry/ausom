@@ -2164,9 +2164,10 @@ app.controller("JvfController", function($scope, $route, $rootScope, $http, $coo
     };
     $timeout(function(){ 
       window.scrollTo(0,0);
-      $("#chat-box").scrollTop($("#chat-box")[0].scrollHeight);
+      if (document.location.href.includes('chat')){
+        $("#chat-box").scrollTop($("#chat-box")[0].scrollHeight);
+      }
     }, 200);
-    //console.log("Caricato", ctl.currTemplate, ctl.current_view);
   };
 
   ctl.spinnerShow = function(message){

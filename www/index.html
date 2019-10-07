@@ -11,7 +11,7 @@
     <meta name="format-detection" content="telephone=no" />
 
     <meta name="csrf-param" content="authenticity_token" />
-<meta name="csrf-token" content="C4PiE4mYV6TZM8zShya+TEhgxZ6uG+NHzNvIAIqacx1sldE/Uq9w1YwmtFtGkvE1jg67tkPBCEZUovl07jo1Ug==" />
+<meta name="csrf-token" content="lQYlJZ7p84zbZ8inrLGX1Jx0+Uf4MPkvdo0yqtS5k6NvkvpZ73VElcCnhrXkpcfIqf7mpnHTWCyKqna9iVyGUA==" />
     
     <link rel="stylesheet" type="text/css" href="css/index.css" />
     <script type="text/javascript" src="cordova.js"></script>
@@ -262,7 +262,7 @@
         <div class="carousel-inner">
           <div class="carousel-item {{($index == 0) ? 'active' : '' }}" ng-repeat="foto in ctl.product_detail.photo_galleries track by $index">
             <!--p>{{foto.nome_foto}}</p-->
-            <img class="img-size popcont" src="https://www.jewelryvirtualfair.com/public/prod-page/{{foto.nome_foto}}" clrass="d-block w-100" alt="JVF">
+            <img class="img-size popcont" ng-if="ctl.current_view == 'product_detail'" src="https://www.jewelryvirtualfair.com/public/prod-page/{{foto.nome_foto}}" clrass="d-block w-100" alt="JVF">
           </div>
         </div>
         <a class="carousel-control-prev" href="#carouselIndicators" role="button" data-slide="prev">
