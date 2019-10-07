@@ -2452,7 +2452,7 @@ app.controller("JvfController", function($scope, $route, $rootScope, $http, $coo
     ctl.space_url = "/api/" + ctl.space_id + "/space";
 
     if (app.is_cordova) {
-      window.open = cordova.InAppBrowser.open;
+      //window.open = cordova.InAppBrowser.open;
 
       ctl.space_url = "http://www.jvf.jewelry" + ctl.space_url;
       ctl.assignSpace($localStorage.$default({}));
