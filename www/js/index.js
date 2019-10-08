@@ -2117,8 +2117,8 @@ app.config(function($routeProvider, $locationProvider) {
 //$scope,e,$rootScope,$http,t,$location,$timeout,$translate,$localStorage,NgMap
 app.controller("JvfController", function($scope, $route, $rootScope, $http, $cookies, $location, $timeout, $interval, $translate, $localStorage, $location, $q) {
   var ctl = this;
-  var app = ctl;
-  var device = {};
+  app = ctl;
+  // var device = {};
   ctl.APPVERSION = '2.1';
   ctl.is_cordova = app.is_cordova;
 
