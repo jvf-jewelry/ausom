@@ -11,7 +11,7 @@
     <meta name="format-detection" content="telephone=no" />
 
     <meta name="csrf-param" content="authenticity_token" />
-<meta name="csrf-token" content="dwIJJXCf9xptYi5U5oS0oQfNZa3Z2XrpdWxODP1eX8HLqhAtrI3+PuwVrkVAy3hZjAvbDE5rsUtHOzcnoNUYdQ==" />
+<meta name="csrf-token" content="VEcplPDt/8WNI9x73UXnGc47pv66J/2TG0QQOK+gcTP00fQVl0ADm9rq5KI9j7U+Ogt4+DCGXdAFcwHvaXfnNQ==" />
     
     <link rel="stylesheet" type="text/css" href="css/index.css" />
     <script type="text/javascript" src="cordova.js"></script>
@@ -57,8 +57,9 @@
         <span aria-hidden="true"><i class="material-icons">arrow_back_ios</i></span>
       </button>
       <span id="nav-title" class="detail-header-title">{{ctl.product_detail.nome_prodotto}}</span>
-      <a class="detail-header-sign" id="sign-in" ng-if="!ctl.logged" ng-click="ctl.openLog()">Sign In</a>
-      <a class="detail-header-icon" id="signed" ng-if="ctl.logged" ng-click="ctl.logOut()"><img src="img/profile.png""></a>
+      <a class="detail-header-icon" id="signed" ng-click="ctl.share_product(ctl.product_detail)">
+        <i class="material-icons">share</i>
+      </a>
     </div>
     <!-- NAVBAR PER DETTAGLI POST -->
     <div id="nav-header" class="post-header" ng-if="ctl.currTemplate == 'partials/post_detail.html'">
@@ -69,8 +70,9 @@
         Post del {{ctl.post_detail.data_ora | date: 'd/M/yyyy' }}
         Ore {{ctl.post_detail.data_ora | date: 'HH:mm' }}
       </span>
-      <a class="post-header-sign" id="sign-in" ng-if="!ctl.logged" ng-click="ctl.openLog()">Sign In</a>
-      <a class="post-header-icon" id="signed" ng-if="ctl.logged" ng-click="ctl.logOut()"><img src="img/profile.png""></a>
+      <a class="post-header-icon" id="signed" ng-click="ctl.share_post(ctl.post_detail)">
+        <i class="material-icons">share</i>
+      </a>
     </div>
     <!-- NAVBAR -->
     <div id="nav-header" class="header" ng-if="ctl.currTemplate != 'partials/product_detail.html' && ctl.currTemplate != 'partials/post_detail.html' ">
@@ -92,9 +94,9 @@
 <script type="text/ng-template" id="partials/posts.html">
   <div id="posts">
   <div class="content_post with-share-button" ng-repeat="p in ctl.space.posts">
-    <a href="" class="share-button" ng-click="ctl.share_post(p)">
+    <!--a href="" class="share-button" ng-click="ctl.share_post(p)">
       <i class="material-icons">share</i>
-    </a>
+    </a-->
     <!-- div class="content_head_post">
         <img src="https://www.jewelryvirtualfair.com/public/logo-page/Jvf-lp-201806071015350699.jpeg" class="borderd" alt="JVF">
         <div class="content_head_auth">
@@ -117,9 +119,9 @@
   <div id="showroom">
   <div class="row">
     <div class="col-md-4 col-6 with-share-button" ng-repeat="p in ctl.space.products">
-      <a href="" class="share-button" ng-click="ctl.share_product(p)">
+      <!--a href="" class="share-button" ng-click="ctl.share_product(p)">
         <i class="material-icons">share</i>
-      </a>
+      </a-->
       <div class="href_art">
         <img ng-click='ctl.showPop(p)' src="https://www.jewelryvirtualfair.com/public/prod-page/{{p.photo_galleries[0].nome_foto}}"
         class="img-responsive bordered_f0 " alt="JVF" />
@@ -317,7 +319,7 @@
     <!-- PIU DI UNA FOTO -->
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" ng-if="ctl.post_pics.length > 1">
       <ol class="carousel-indicators">
-        <li data-target="#carouselIndicators" class="{{($index == 0) ? 'active' : '' }}" data-slide-to="{{$index}}" 
+        <li data-target="#carouselExampleIndicators" class="{{($index == 0) ? 'active' : '' }}" data-slide-to="{{$index}}" 
               ng-repeat="foto in ctl.post_pics track by $index"></li>
       </ol>
       <div class="carousel-inner">

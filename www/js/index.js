@@ -2120,7 +2120,8 @@ app.controller("JvfController", function($scope, $route, $rootScope, $http, $coo
   app = ctl;
   // var device = {};
   ctl.APPVERSION = '2.1';
-  ctl.is_cordova = app.is_cordova;
+  ctl.is_cordova = !!window.cordova;
+  app.is_cordova = !!window.cordova;
 
 
   ctl.reload = function(){
@@ -2154,14 +2155,19 @@ app.controller("JvfController", function($scope, $route, $rootScope, $http, $coo
         break;
       case 'partials/product_detail.html':
         ctl.current_view = 'product_detail';
+        ctl.hideNavbar();
         break;
       case 'partials/post_detail.html':
         ctl.current_view = 'post_detail';
+        ctl.hideNavbar();
         break;
       default:
         ctl.current_view = 'posts';
         break;
     };
+
+    if (ctl.current_view != 'product_detail' && ctl.current_view != 'post_detail') ctl.showNavbar();
+    
     $timeout(function(){ 
       window.scrollTo(0,0);
       if (document.location.href.includes('chat')){
@@ -2169,6 +2175,20 @@ app.controller("JvfController", function($scope, $route, $rootScope, $http, $coo
       }
     }, 200);
   };
+
+  ctl.hideNavbar = function(){
+    $('.jvf-menu').hide();
+  }
+
+  ctl.showNavbar = function(){
+    var tab_with = 100 / $('.jvf-menu li:visible').length;
+    var tab_css  = 'calc(' + tab_with + '% - 3px)';
+    $('.jvf-menu li').css({
+      'min-width': tab_css,
+      'max-width': tab_css,
+    });
+    $('.jvf-menu').show();
+  }
 
   ctl.spinnerShow = function(message){
     if (!message) message = 'Loading...';
@@ -2222,7 +2242,6 @@ app.controller("JvfController", function($scope, $route, $rootScope, $http, $coo
   ctl.closePost = function(){
     $location.path("/posts");
   };
-
 
   ctl.showPop = function(url){
     ctl.product_detail = url;
@@ -2451,7 +2470,9 @@ app.controller("JvfController", function($scope, $route, $rootScope, $http, $coo
     ctl.space_id  = $('body').data('space_id');
     ctl.space_url = "http://www.jvf.jewelry/api/" + ctl.space_id + "/space";
 
-    if (app.is_cordova) {
+    console.log("è cordova????????", !!window.cordova);
+
+    if (ctl.is_cordova) {
       window.open = cordova.InAppBrowser.open;
       // ctl.space_url = "http://www.jvf.jewelry" + ctl.space_url;
       ctl.assignSpace($localStorage.$default({}));
@@ -2494,7 +2515,6 @@ app.controller("JvfController", function($scope, $route, $rootScope, $http, $coo
 
   if (app.is_cordova) {
     document.addEventListener("deviceready", ctl.mainFunction);
-    console.log("DIO CARO MA è CORDOVA O NO???");
   }
   else ctl.mainFunction();
 });
