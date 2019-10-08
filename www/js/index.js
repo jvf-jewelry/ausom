@@ -2396,7 +2396,7 @@ app.controller("JvfController", function($scope, $route, $rootScope, $http, $coo
       $http.get(send_from, 
         { 
           params: { 
-            device_id: device.uuid, 
+            device_id: ctl.uuid, 
             page_id: ctl.space.info.id, 
             question: document.getElementById("msg-input").value.trim(),
             product_id: product_id
@@ -2424,7 +2424,7 @@ app.controller("JvfController", function($scope, $route, $rootScope, $http, $coo
       request_from = "http://localhost:3000/api/chats";
     }
 
-    $http.get(request_from, { params: { device_id: device.uuid, page_id: ctl.space.info.id } }).
+    $http.get(request_from, { params: { device_id: ctl.uuid, page_id: ctl.space.info.id } }).
     then(
       function(response){
         ctl.space.chats = response.data;
@@ -2453,11 +2453,11 @@ app.controller("JvfController", function($scope, $route, $rootScope, $http, $coo
 
     if (app.is_cordova) {
       window.open = cordova.InAppBrowser.open;
-
       // ctl.space_url = "http://www.jvf.jewelry" + ctl.space_url;
       ctl.assignSpace($localStorage.$default({}));
       ctl.pushNotification();
       console.log(device.uuid);
+      ctl.uuid = device.uuid;
       // HO GIA' CARICATO I DATI UNA VOLTA
       if (ctl.space && ctl.space.space_id == ctl.space_id) {
         $timeout(function(){ ctl.spinnerHide(); }, 350);
@@ -2474,6 +2474,7 @@ app.controller("JvfController", function($scope, $route, $rootScope, $http, $coo
     } else {
       //TODO Rimuovere una volta che il sito va online
       //device.uuid = "asdiuqadiy-sdadusad-dsad";
+      ctl.uuid = "UUID-DI.TEST";
       ctl.loadRemote(function(){
         if (ctl.space && ctl.space.space_id == ctl.space_id) {
           $timeout(function(){ ctl.spinnerHide(); }, 350);
