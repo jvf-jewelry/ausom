@@ -2477,7 +2477,6 @@ app.controller("JvfController", function($scope, $route, $rootScope, $http, $coo
       ctl.loadRemote(function(){
         if (ctl.space && ctl.space.space_id == ctl.space_id) {
           $timeout(function(){ ctl.spinnerHide(); }, 350);
-          
           $interval(function(){ ctl.getChats(); }, 30000);
         
         } else {
