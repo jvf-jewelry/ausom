@@ -2492,7 +2492,10 @@ app.controller("JvfController", function($scope, $route, $rootScope, $http, $coo
     }, 500);
   };
 
-  if (app.is_cordova) document.addEventListener("deviceready", ctl.mainFunction);
+  if (app.is_cordova) {
+    document.addEventListener("deviceready", ctl.mainFunction);
+    console.log("DIO CARO MA è CORDOVA O NO???");
+  }
   else ctl.mainFunction();
 });
 app.config(function($translateProvider) {
