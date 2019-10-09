@@ -2366,6 +2366,7 @@ app.controller("JvfController", function($scope, $route, $rootScope, $http, $coo
         console.log("registration id: " + data.registrationId);
         // Post registrationId to your app server as the value has changed
       }
+      ctl.registration_id = localStorage.getItem('registrationId');
     });
 
     push.on('notification', function(data) {
@@ -2440,7 +2441,8 @@ app.controller("JvfController", function($scope, $route, $rootScope, $http, $coo
             device_id: ctl.uuid, 
             page_id: ctl.space.info.id, 
             question: document.getElementById("msg-input").value.trim(),
-            product_id: product_id
+            product_id: product_id,
+            registration_id: ctl.registration_id
           }
         }).then(function(response){
           console.log("Saved!");
