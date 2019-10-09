@@ -2117,12 +2117,15 @@ app.config(function($routeProvider, $locationProvider) {
 //$scope,e,$rootScope,$http,t,$location,$timeout,$translate,$localStorage,NgMap
 app.controller("JvfController", function($scope, $route, $rootScope, $http, $cookies, $location, $timeout, $interval, $translate, $localStorage, $location, $q) {
   var ctl = this;
-  app = ctl;
+  app.ctl = ctl;
   // var device = {};
   ctl.APPVERSION = '2.1';
   ctl.is_cordova = !!window.cordova;
   app.is_cordova = !!window.cordova;
 
+  ctl.apply = function(){
+    setTimeout(function(){ $scope.$apply();}, 50);
+  }
 
   ctl.reload = function(){
     location.reload();
@@ -2243,7 +2246,21 @@ app.controller("JvfController", function($scope, $route, $rootScope, $http, $coo
     $location.path("/posts");
   };
 
-  ctl.showPop = function(url){
+  ctl.gotoProduct = function(id){
+    ctl.coming_from = 'chat'
+    var data = ctl.space.products;
+    var tmp;
+    for (var i=0; i < data.length && !tmp; i++){
+      if (data[i].id == id){
+        tmp = data[i]
+      }
+    }
+    if (tmp) ctl.showProduct(tmp);
+    else $location.path("/chats");
+    ctl.apply();
+  }
+
+  ctl.showProduct = function(url){
     ctl.product_detail = url;
     $location.path("/product_detail");
     if (ctl.product_detail.photo_galleries.length > 1){
@@ -2251,8 +2268,13 @@ app.controller("JvfController", function($scope, $route, $rootScope, $http, $coo
     }
   };
   
-  ctl.closePop = function(){
-    $location.path("/showroom");
+  ctl.closeProduct = function(){
+    if (ctl.coming_from && ctl.coming_from == 'chat'){
+      ctl.coming_from = undefined;
+      $location.path("/chat");
+    }
+    else
+      $location.path("/showroom");
   };
 
   ctl.share = function(message, subject, image, link){
