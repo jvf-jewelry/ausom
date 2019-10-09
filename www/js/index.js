@@ -2494,7 +2494,7 @@ app.controller("JvfController", function($scope, $route, $rootScope, $http, $coo
     ctl.space_id  = $('body').data('space_id');
     ctl.space_url = "http://www.jvf.jewelry/api/" + ctl.space_id + "/space";
 
-    console.log("è cordova????????", !!window.cordova);
+    console.log("è cordova?", !!window.cordova);
 
     if (ctl.is_cordova) {
       window.open = cordova.InAppBrowser.open;
@@ -2523,13 +2523,14 @@ app.controller("JvfController", function($scope, $route, $rootScope, $http, $coo
       ctl.loadRemote(function(){
         if (ctl.space && ctl.space.space_id == ctl.space_id) {
           $timeout(function(){ ctl.spinnerHide(); }, 350);
-          $interval(function(){ ctl.getChats(); }, 30000);
         
         } else {
           $('#app_spinner div.reload').show();
         }
       });
     }
+    
+    $interval(function(){ ctl.getChats(); }, 30000);
 
     $timeout(function(){
       ctl.loadView();
