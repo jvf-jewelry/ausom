@@ -58,7 +58,7 @@
       <splash density="port-xxxhdpi" src="www/res/screen/android/drawable-port-xxxhdpi-screen.png" />
     </platform>
     <platform name="ios">
-        <plugin name="phonegap-plugin-push">
+        <plugin name="phonegap-plugin-push" spec="2.3.0">
           <param name="SENDER_ID" value="885456400892" />
         </plugin>
         <resource-file src="GoogleService-Info.plist" />
