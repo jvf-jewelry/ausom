@@ -2437,7 +2437,7 @@ app.controller("JvfController", function($scope, $route, $rootScope, $http, $coo
 
 
     if (document.getElementById("msg-input").value.trim() != ""){
-      if (ctl.space.chats != undefined){
+      if (ctl.space.chats == undefined){
         ctl.space.chats = []
       }
       ctl.space.chats.push({'question': document.getElementById("msg-input").value});
