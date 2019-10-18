@@ -2155,6 +2155,7 @@ app.controller("JvfController", function($scope, $route, $rootScope, $http, $coo
       case 'partials/chat.html':
         ctl.current_view = 'chat';
         ctl.no_scroll="no-scroll";
+        console.log(ctl.space)
         break;
       case 'partials/product_detail.html':
         ctl.current_view = 'product_detail';
@@ -2436,7 +2437,11 @@ app.controller("JvfController", function($scope, $route, $rootScope, $http, $coo
 
 
     if (document.getElementById("msg-input").value.trim() != ""){
+      if (ctl.space.chats != undefined){
+        ctl.space.chats = []
+      }
       ctl.space.chats.push({'question': document.getElementById("msg-input").value});
+      
       $http.get(send_from, 
         { 
           params: { 
