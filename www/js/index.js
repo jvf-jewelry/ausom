@@ -2184,20 +2184,18 @@ app.controller("JvfController", function($scope, $route, $rootScope, $http, $coo
     $('.jvf-menu').hide();
   }
   ctl.swipeFunction = function(){
-    $(".carousel").on("touchstart", function(event){
-      var xClick = event.originalEvent.touches[0].pageX;
-      $(this).one("touchmove", function(event){
-        var xMove = event.originalEvent.touches[0].pageX;
-        if( Math.floor(xClick - xMove) > 5 ){
-            $(".carousel").carousel('prev');
+    $(".carousel").swipe({
+      swipe: function(event, direction, distance, duration, fingerCount, fingerData) {
+        if (direction == 'left') {
+          console.log("sinistra");
+          $(this).carousel('next');
         }
-        else if( Math.floor(xClick - xMove) < -5 ){
-            $(".carousel").carousel('next');
+        if (direction == 'right') {
+          console.log("destra");
+          $(this).carousel('prev');
         }
-      });
-      $(".carousel").on("touchend", function(){
-        $(this).off("touchmove");
-      });
+      },
+      allowPageScroll:"vertical"
     });
   }
 
@@ -2553,8 +2551,10 @@ app.controller("JvfController", function($scope, $route, $rootScope, $http, $coo
         }
       });
     }
-    
-    $interval(function(){ ctl.getChats(); }, 30000);
+
+    window.setInterval(function(){
+        ctl.getChats();
+    }, 30000);
 
     $timeout(function(){
       ctl.loadView();
