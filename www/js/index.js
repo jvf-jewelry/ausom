@@ -2163,7 +2163,7 @@ app.controller("JvfController", function($scope, $route, $rootScope, $http, $coo
       case 'partials/post_detail.html':
         ctl.current_view = 'post_detail';
         ctl.hideNavbar();
-        ctl.swipeFunction();
+        //ctl.swipeFunction();
         break;
       default:
         ctl.current_view = 'posts';
