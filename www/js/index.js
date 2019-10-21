@@ -2155,7 +2155,6 @@ app.controller("JvfController", function($scope, $route, $rootScope, $http, $coo
       case 'partials/chat.html':
         ctl.current_view = 'chat';
         ctl.no_scroll="no-scroll";
-        console.log(ctl.space)
         break;
       case 'partials/product_detail.html':
         ctl.current_view = 'product_detail';
@@ -2185,10 +2184,20 @@ app.controller("JvfController", function($scope, $route, $rootScope, $http, $coo
     $('.jvf-menu').hide();
   }
   ctl.swipeFunction = function(){
-    $('.carousel-item').on('.carousel-item', 'swipeleft', function () {
-      $('#carouselIndicators').carousel('next');
-    }).on('.carousel-item', 'swiperight', function () {
-      $('#carouselIndicators').carousel('prev');
+    $(".carousel").on("touchstart", function(event){
+      var xClick = event.originalEvent.touches[0].pageX;
+      $(this).one("touchmove", function(event){
+        var xMove = event.originalEvent.touches[0].pageX;
+        if( Math.floor(xClick - xMove) > 5 ){
+            $(".carousel").carousel('prev');
+        }
+        else if( Math.floor(xClick - xMove) < -5 ){
+            $(".carousel").carousel('next');
+        }
+      });
+      $(".carousel").on("touchend", function(){
+        $(this).off("touchmove");
+      });
     });
   }
 
