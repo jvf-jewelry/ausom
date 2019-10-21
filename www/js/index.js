@@ -2159,11 +2159,11 @@ app.controller("JvfController", function($scope, $route, $rootScope, $http, $coo
       case 'partials/product_detail.html':
         ctl.current_view = 'product_detail';
         ctl.hideNavbar();
+        ctl.swipeFunction();
         break;
       case 'partials/post_detail.html':
         ctl.current_view = 'post_detail';
         ctl.hideNavbar();
-        //ctl.swipeFunction();
         break;
       default:
         ctl.current_view = 'posts';
@@ -2183,6 +2183,7 @@ app.controller("JvfController", function($scope, $route, $rootScope, $http, $coo
   ctl.hideNavbar = function(){
     $('.jvf-menu').hide();
   }
+  
   ctl.swipeFunction = function(){
     $(".carousel").swipe({
       swipe: function(event, direction, distance, duration, fingerCount, fingerData) {
@@ -2197,6 +2198,7 @@ app.controller("JvfController", function($scope, $route, $rootScope, $http, $coo
       },
       allowPageScroll:"vertical"
     });
+    console.log()
   }
 
   ctl.showNavbar = function(){
