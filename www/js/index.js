@@ -2163,6 +2163,7 @@ app.controller("JvfController", function($scope, $route, $rootScope, $http, $coo
       case 'partials/post_detail.html':
         ctl.current_view = 'post_detail';
         ctl.hideNavbar();
+        ctl.swipeFunction();
         break;
       default:
         ctl.current_view = 'posts';
@@ -2181,6 +2182,13 @@ app.controller("JvfController", function($scope, $route, $rootScope, $http, $coo
 
   ctl.hideNavbar = function(){
     $('.jvf-menu').hide();
+  }
+  ctl.swipeFunction = function(){
+    $('.carousel-item').on('.carousel-item', 'swipeleft', function () {
+      $('#carouselIndicators').carousel('next');
+    }).on('.carousel-item', 'swiperight', function () {
+      $('#carouselIndicators').carousel('prev');
+    });
   }
 
   ctl.showNavbar = function(){
@@ -2436,7 +2444,11 @@ app.controller("JvfController", function($scope, $route, $rootScope, $http, $coo
 
 
     if (document.getElementById("msg-input").value.trim() != ""){
+      if (ctl.space.chats == undefined){
+        ctl.space.chats = []
+      }
       ctl.space.chats.push({'question': document.getElementById("msg-input").value});
+      
       $http.get(send_from, 
         { 
           params: { 
