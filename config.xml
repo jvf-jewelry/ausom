@@ -4,11 +4,6 @@
     <description>Ausom by JVF</description>
     <author email='fabio@serendpt.net' href='http://serendpt.net/it'>SerenDPT</author>
     <content src="index.html" />
-    <access origin="*" />
-    <edit-config file="app/src/main/AndroidManifest.xml" mode="merge" target="/manifest/application">
-        <application android:usesCleartextTraffic="true" />
-    </edit-config>
-    <allow-navigation href="*" />
     <preference name="DisallowOverscroll" value="true" />
     <preference name="phonegap-version" value="cli-8.0.0" />
     <gap:plugin name="cordova-plugin-x-socialsharing" source="npm" />
