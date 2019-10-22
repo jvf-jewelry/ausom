@@ -11,7 +11,7 @@
     <meta name="format-detection" content="telephone=no" />
 
     <meta name="csrf-param" content="authenticity_token" />
-<meta name="csrf-token" content="uau1DnHiYX+ZmpBLfz6qVViDMOrJvclw1JCFtxCyfQxErEYMhWYJPzYAyoLJfYzdbZIa5P+DFe3lWxk6VrEAiQ==" />
+<meta name="csrf-token" content="TfanTAP8ys5+TCnoAs0vTwO6ev9631jdIK9/LqUmR4Y/V3koTZjkZqV5CIzlvxczLXqC52HHUpsWcaNgEUSqOg==" />
     
     <link rel="stylesheet" type="text/css" href="css/index.css" />
     <script type="text/javascript" src="cordova.js"></script>
@@ -88,11 +88,11 @@
         Click here to retry
       </div>
     </div>
-    <div class="container {{ctl.no_scroll}}" style="min-height: 100vh; padding-bottom: 80px; padding-top: 82px;">
+    <div class="container {{ctl.no_scroll}}" style="min-height: 100vh; padding-bottom: 80px;">
       <ng-view></ng-view>
 
 <script type="text/ng-template" id="partials/posts.html">
-  <div id="posts">
+  <div id="posts" class="page_80">
   <div class="content_post with-share-button" ng-repeat="p in ctl.space.posts">
     <!--a href="" class="share-button" ng-click="ctl.share_post(p)">
       <i class="material-icons">share</i>
@@ -116,7 +116,7 @@
 </div>
 </script>
 <script type="text/ng-template" id="partials/showroom.html">
-  <div id="showroom">
+  <div id="showroom" class="page_80">
   <div class="row">
     <div class="col-md-4 col-6 with-share-button" ng-repeat="p in ctl.space.products">
       <!--a href="" class="share-button" ng-click="ctl.share_product(p)">
@@ -133,7 +133,7 @@
 </div>
 </script>
 <script type="text/ng-template" id="partials/gallery.html">
-  <div id="gallery">
+  <div id="gallery" class="page_80">
   <div class="owl-item cloned">
     <div class="item" ng-repeat="g in ctl.space.gallery">
       <img src="https://www.jewelryvirtualfair.com/public/gallery-page/{{g.nome_foto}}"
@@ -145,7 +145,7 @@
 </div>
 </script>
 <script type="text/ng-template" id="partials/video.html">
-  <div id="video">
+  <div id="video" class="page_80">
   <br />
   <h1 class="h1_scheda">Video Aziendale</h1>
   <br />
@@ -154,7 +154,7 @@
 </div>
 </script>
 <script type="text/ng-template" id="partials/profile.html">
-  <div id="profile">
+  <div id="profile" class="page_80">
   <div class="row">
     <div class="col-sm-3 hide_sm">
       <div class="content_img_scheda ">
@@ -221,7 +221,7 @@
 </div>
 </script>
 <script type="text/ng-template" id="partials/chat.html">
-  <div id="chat" style="overflow-y: none;">
+  <div id="chat" class="page_80" style="overflow-y: none;">
   <div id="chat-box" class="chat-box" style="overflow-y: auto;">
     <div ng-repeat="elem in ctl.space.chats">
       <div class="bubble-q" ng-bind-html="elem.question | newlines | to_trusted "></div>
@@ -235,12 +235,7 @@
 </div>
 </script>
 <script type="text/ng-template" id="partials/product_detail.html">
-  <div id="message-sent">
-  <h3><b>Messaggio inviato!</b></h3>
-  <p>Il messaggio è stato inviato, gli operatori di {{ctl.nome_agency}} ti risponderanno al più presto!</p>
-</div>
-
-<div id="imgpop">
+  <div id="imgpop" class="page_100">
   <div>
     <!-- SOLO UNA FOTO -->
     <div class="popcont img-size" ng-if="ctl.product_detail.photo_galleries.length == 1">
@@ -298,10 +293,15 @@
       </div>
     </div>
   </div>
+
+  <div id="message-sent">
+    <h3><b>Messaggio inviato!</b></h3>
+    <p>Il messaggio è stato inviato, gli operatori di {{ctl.nome_agency}} ti risponderanno al più presto!</p>
+  </div>
 </div>
 </script>
 <script type="text/ng-template" id="partials/post_detail.html">
-  <div id="postpop">
+  <div id="postpop" class="page_100">
   <div>
     <!--div style="width: 100%; display: inline-block;">
       <button id="close" type="button" class="close" ng-click="ctl.closePost()" aria-label="Close">
