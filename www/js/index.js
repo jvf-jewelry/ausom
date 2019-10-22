@@ -2428,7 +2428,7 @@ app.controller("JvfController", function($scope, $route, $rootScope, $http, $coo
   };
 
   ctl.logIn = function(){
-    $http.get("http://www.jvf.jewelry/api/login.json", 
+    $http.get("https://jvfjewelry.herokuapp.com/api/login.json", 
       {
         params:{ 
           email: encodeURIComponent(document.getElementById("email").value), 
@@ -2454,7 +2454,7 @@ app.controller("JvfController", function($scope, $route, $rootScope, $http, $coo
   }
 
   ctl.send = function(){
-    var send_from = "http://www.jvf.jewelry/api/send_message";
+    var send_from = "https://jvfjewelry.herokuapp.com/api/send_message";
 
     if (document.location.href.includes("localhost")){
       send_from = "http://localhost:3000/api/send_message";
@@ -2499,7 +2499,7 @@ app.controller("JvfController", function($scope, $route, $rootScope, $http, $coo
   }
 
   ctl.getChats = function(){
-    var request_from = "http://www.jvf.jewelry/api/chats";
+    var request_from = "https://jvfjewelry.herokuapp.com/api/chats";
 
     if (document.location.href.includes("localhost")){
       request_from = "http://localhost:3000/api/chats";
@@ -2530,13 +2530,13 @@ app.controller("JvfController", function($scope, $route, $rootScope, $http, $coo
     // if (app.is_cordova) app.cordova_startup(ctl,$http,$localStorage,$translate);
 
     ctl.space_id  = $('body').data('space_id');
-    ctl.space_url = "http://www.jvf.jewelry/api/" + ctl.space_id + "/space";
+    ctl.space_url = "https://jvfjewelry.herokuapp.com/api/" + ctl.space_id + "/space";
 
     console.log("è cordova?", !!window.cordova);
 
     if (ctl.is_cordova) {
       window.open = cordova.InAppBrowser.open;
-      // ctl.space_url = "http://www.jvf.jewelry" + ctl.space_url;
+      // ctl.space_url = "https://jvfjewelry.herokuapp.com" + ctl.space_url;
       ctl.assignSpace($localStorage.$default({}));
       ctl.pushNotification();
       console.log(device.uuid);
