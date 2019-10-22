@@ -2174,7 +2174,7 @@ app.controller("JvfController", function($scope, $route, $rootScope, $http, $coo
       case 'partials/product_detail.html':
         ctl.current_view = 'product_detail';
         ctl.hideNavbar();
-        ctl.swipeFunction();
+        setTimeout(ctl.swipeFunction, 500);
         break;
       case 'partials/post_detail.html':
         ctl.current_view = 'post_detail';
@@ -2213,7 +2213,6 @@ app.controller("JvfController", function($scope, $route, $rootScope, $http, $coo
       },
       allowPageScroll:"vertical"
     });
-    console.log()
   }
 
   ctl.showNavbar = function(){

@@ -11,7 +11,7 @@
     <meta name="format-detection" content="telephone=no" />
 
     <meta name="csrf-param" content="authenticity_token" />
-<meta name="csrf-token" content="TfanTAP8ys5+TCnoAs0vTwO6ev9631jdIK9/LqUmR4Y/V3koTZjkZqV5CIzlvxczLXqC52HHUpsWcaNgEUSqOg==" />
+<meta name="csrf-token" content="TcbVXyKFhq+4pw4kM0a/005AGjtQOx7ehGcutLVqpbe4ypIs+KkHmin6637c5vrMwCuB1YvL3oXAodC+nWdKzQ==" />
     
     <link rel="stylesheet" type="text/css" href="css/index.css" />
     <script type="text/javascript" src="cordova.js"></script>
@@ -94,17 +94,6 @@
 <script type="text/ng-template" id="partials/posts.html">
   <div id="posts" class="page_80">
   <div class="content_post with-share-button" ng-repeat="p in ctl.space.posts">
-    <!--a href="" class="share-button" ng-click="ctl.share_post(p)">
-      <i class="material-icons">share</i>
-    </a-->
-    <!-- div class="content_head_post">
-        <img src="https://www.jewelryvirtualfair.com/public/logo-page/Jvf-lp-201806071015350699.jpeg" class="borderd" alt="JVF">
-        <div class="content_head_auth">
-            <strong>ITALSTEEL s.r.lstrong>
-            Italia, Arezzo<br>
-            <span class="fs12">24/07/2019 16.20</span>
-        </div>
-    </div -->
     <b>{{p.languages[0].des_annuncio}}</b>
     <img ng-click="ctl.showPost(p)" src="https://www.jewelryvirtualfair.com/public/post-image/{{p.immagine_1}}" class="img-responsive mt-3" alt="JVF">
     
@@ -119,9 +108,6 @@
   <div id="showroom" class="page_80">
   <div class="row">
     <div class="col-md-4 col-6 with-share-button" ng-repeat="p in ctl.space.products">
-      <!--a href="" class="share-button" ng-click="ctl.share_product(p)">
-        <i class="material-icons">share</i>
-      </a-->
       <div class="href_art">
         <img ng-click='ctl.showProduct(p)' src="https://www.jewelryvirtualfair.com/public/prod-page/{{p.photo_galleries[0].nome_foto}}"
         class="img-responsive bordered_f0 " alt="JVF" />
@@ -158,34 +144,19 @@
   <div class="row">
     <div class="col-sm-3 hide_sm">
       <div class="content_img_scheda ">
-        <!--img src="https://www.jewelryvirtualfair.com/public/logo-page/{{ctl.space.info.logo_page}}"
-          class="img-responsive" alt="{{ctl.space.title}}" /-->
       </div>
     </div>
     <div id="banner" style="padding-top:0!important;">
       <img style="max-width: 100%; margin-bottom: 10px;" src="https://www.jewelryvirtualfair.com/public/banner-page/{{ctl.space.info.banner_page}}">
     </div>
     <div class="col-sm-9">
-      <!--h1 class="h1_scheda">{{ctl.space.title}}</h1-->
       <h2 class="h2_scheda">{{ctl.space.info.claim_page}}</h2>
       <br />
     </div>
   </div>
   <h5 class="h5_scheda j_height_des" ng-bind-html="ctl.space.info.des_page | to_trusted"></h5>
   <br /><br />
-  <!-- div class="contatta_scheda" >
-    <strong>Contatta</strong> {{ctl.space.title}}
-  </div -->
   <div class="content_fixed_right_scheda" style="position: static; top: unset; width: unset;">
-    <!-- table class="content_fast_link">
-        <tbody><tr>
-            <td class="wish_scheda">
-                
-                <i class="fa fa-heart-o j_wish" onclick="add_remove_wish(842);"></i>
-            </td>
-        </tr>
-        <tr><td class="condividi_scheda">Condividi<div id="share_scheda" class="jssocials"><div class="jssocials-shares"><div class="jssocials-share jssocials-share-twitter"><a target="_blank" href="https://twitter.com/share?url=https%3A%2F%2Fwww.jewelryvirtualfair.com%2Fit%2Fitalsteel-s-r-l%2Fsp-842%2F&amp;text=ITALSTEEL%20s.r.l.%20-%20Jewelry%20Virtual%20Fair" class="jssocials-share-link"><i class="fa fa-twitter jssocials-share-logo"></i></a></div><div class="jssocials-share jssocials-share-facebook"><a target="_blank" href="https://facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.jewelryvirtualfair.com%2Fit%2Fitalsteel-s-r-l%2Fsp-842%2F" class="jssocials-share-link"><i class="fa fa-facebook jssocials-share-logo"></i></a></div><div class="jssocials-share jssocials-share-googleplus"><a target="_blank" href="https://plus.google.com/share?url=https%3A%2F%2Fwww.jewelryvirtualfair.com%2Fit%2Fitalsteel-s-r-l%2Fsp-842%2F" class="jssocials-share-link"><i class="fa fa-google jssocials-share-logo"></i></a></div></div></div></td></tr>
-    </tbody></table -->
     <div class="content_dati_scheda">
         <strong>Nazione:</strong>
           {{ctl.space.info.nazione || 'Italia'}}<br />
@@ -204,10 +175,6 @@
         <a href="http://{{ctl.space.info.sito_internet}}" target="_blank">
           https://{{ctl.space.info.sito_internet}}
         </a>
-        
-        <!-- div class="content_social_scheda">
-            <a href="https://www.facebook.com/italsteel.srl.7" class="fa fa-facebook" target="_blank"></a><a href="https://www.instagram.com/ital_steel/" class="fa fa-instagram" target="_blank"></a>
-        </div -->
     </div>
     <!-- div class="content_mappa_scheda">
         MAPPA
@@ -250,7 +217,6 @@
         </ol>
         <div class="carousel-inner">
           <div class="carousel-item {{($index == 0) ? 'active' : '' }}" ng-repeat="foto in ctl.product_detail.photo_galleries track by $index">
-            <!--p>{{foto.nome_foto}}</p-->
             <img id="carousel-img" class="img-size popcont" ng-if="ctl.current_view == 'product_detail'" src="https://www.jewelryvirtualfair.com/public/prod-page/{{foto.nome_foto}}" clrass="d-block w-100" alt="JVF">
           </div>
         </div>
@@ -262,14 +228,6 @@
           <i class="material-icons" style="color:#aa165f;font-size: 45px;">keyboard_arrow_right</i>
           <span class="sr-only">Next</span>
         </button>
-        <!--a class="carousel-control-prev" href="#carouselIndicators" role="button" data-slide="prev">
-          <i class="material-icons" style="color:#aa165f;font-size: 45px;">keyboard_arrow_left</i>
-          <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselIndicators" role="button" data-slide="next">
-          <i class="material-icons" style="color:#aa165f;font-size: 45px;">keyboard_arrow_right</i>
-          <span class="sr-only">Next</span>
-        </a-->
       </div>
     </div>
 
@@ -303,15 +261,6 @@
 <script type="text/ng-template" id="partials/post_detail.html">
   <div id="postpop" class="page_100">
   <div>
-    <!--div style="width: 100%; display: inline-block;">
-      <button id="close" type="button" class="close" ng-click="ctl.closePost()" aria-label="Close">
-        <span aria-hidden="true"><i class="material-icons">arrow_back_ios</i></span>
-      </button>
-    </div>
-    <div>
-      <p id="product-name-content" class="pop-name">Post del {{ctl.post_detail.data_ora | date: 'd/M/yyyy' }}</p>
-      <p id="product-name-content" class="pop-name">Ore {{ctl.post_detail.data_ora | date: 'HH:mm' }}</p>
-    </div-->
     <!-- SOLO UNA FOTO -->
     <div class="popcont img-size" ng-if="ctl.post_pics.length == 1">
       <img class="img-size popcont d-block w-100" src="https://www.jewelryvirtualfair.com/public/post-image/{{ctl.post_pics[0]}}" alt="JVF">
@@ -335,14 +284,6 @@
           <i class="material-icons" style="color:#aa165f;font-size: 45px;">keyboard_arrow_right</i>
           <span class="sr-only">Next</span>
         </button>
-      <!--a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-        <i class="material-icons" style="color:#aa165f;font-size: 45px;">keyboard_arrow_left</i>
-        <span class="sr-only">Previous</span>
-      </a>
-      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-        <i class="material-icons" style="color:#aa165f;font-size: 45px;">keyboard_arrow_right</i>
-        <span class="sr-only">Next</span>
-      </a-->
     </div>
 
     <div style="margin: 0 auto; max-width: 80%;">
@@ -350,10 +291,6 @@
         <div ng-if="ctl.post_detail.languages[0].des_annuncio != '' && ctl.post_detail.languages[0].des_annuncio != null">
           <p id="desc-content" class="pop-text-content">{{ctl.post_detail.languages[0].des_annuncio}}</p>
         </div>
-        <!--div ng-if="ctl.post_detail.specifiche_text != '' && ctl.post_detail.specifiche_text != null">
-          <p class="pop-title-desc"><b>Specifiche prodotto</b></p>
-          <p id="desc-content" class="pop-text-content">{{ctl.post_detail.specifiche_text}}</p>
-        </div-->
       </div>
     </div>
   </div>
