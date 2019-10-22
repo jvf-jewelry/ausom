@@ -1,11 +1,16 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="net.serendpt.ausom" version="1.5.8" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:android="http://schemas.android.com/apk/res/android">
+<widget id="net.serendpt.ausom" version="1.6.0" xmlns="http://www.w3.org/ns/widgets" 
+      xmlns:gap="http://phonegap.com/ns/1.0"
+      xmlns:android="http://schemas.android.com/apk/res/android">
     <name>Ausom</name>
     <description>Ausom by JVF</description>
     <author email='fabio@serendpt.net' href='http://serendpt.net/it'>SerenDPT</author>
     <content src="index.html" />
     <preference name="DisallowOverscroll" value="true" />
     <preference name="phonegap-version" value="cli-8.0.0" />
+    <gap:config-file platform="android" parent="/manifest" mode="merge">
+        <application android:usesCleartextTraffic="true" />
+    </gap:config-file>
     <gap:plugin name="cordova-plugin-x-socialsharing" source="npm" />
     <plugin name="cordova-plugin-battery-status" source="npm" spec="~1.1.1" />
     <plugin name="cordova-plugin-contacts" source="npm" spec="~2.0.1" />
