@@ -11,7 +11,7 @@
     <meta name="format-detection" content="telephone=no" />
 
     <meta name="csrf-param" content="authenticity_token" />
-<meta name="csrf-token" content="pmLZnpepOIxt1+6iSmlIKCZMdcagT0FwVRuEBfJ3FQnEMiLGXl4/qdrDZ6IZ4T09M7YSBo5J7VXsNOPTotJK5Q==" />
+<meta name="csrf-token" content="74nuYV1L9W6bpvU2xMIKzRsbBTfNNWe8c5TjJZt8UM7esbLxyHAVn3OwE17+SixnvOEJfV+OEQa6kZv7DfE7Nw==" />
     
     <link rel="stylesheet" type="text/css" href="css/index.css" />
     <script type="text/javascript" src="cordova.js"></script>
@@ -41,7 +41,6 @@
         background: #aa165f;
       }
       #app_spinner div.reload {
-        height: 100px;
         top: calc(50vh - 50px);
         padding-top: 12px;
         cursor: pointer;
@@ -56,9 +55,11 @@
       <button id="close" type="button" class="close detail-header-button" ng-click="ctl.closeProduct()" aria-label="Close">
         <span aria-hidden="true"><i class="material-icons">arrow_back_ios</i></span>
       </button>
-      <span id="nav-title" class="detail-header-title">{{ctl.product_detail.nome_prodotto}}</span>
+      <span id="nav-title" class="detail-header-title">
+        {{ ctl.product_detail.nome_prodotto | limitTo: 30 }}{{ctl.product_detail.nome_prodotto.length > 20 ? '...' : ''}}
+      </span>
       <a class="detail-header-icon" id="signed" ng-click="ctl.share_product(ctl.product_detail)">
-        <i class="material-icons">share</i>
+        <i class="material-icons" style="padding-top: 11%;">share</i>
       </a>
     </div>
     <!-- NAVBAR PER DETTAGLI POST -->
@@ -67,33 +68,61 @@
         <span aria-hidden="true"><i class="material-icons">arrow_back_ios</i></span>
       </button>
       <span id="nav-title" class="post-header-title">
-        Post del {{ctl.post_detail.data_ora | date: 'd/M/yyyy' }}
-        Ore {{ctl.post_detail.data_ora | date: 'HH:mm' }}
+        {{ 'posted' | translate }} {{ctl.post_detail.data_ora | date: 'd/M/yyyy' }}
+        {{ 'at' | translate }} {{ctl.post_detail.data_ora | date: 'HH:mm' }}
       </span>
       <a class="post-header-icon" id="signed" ng-click="ctl.share_post(ctl.post_detail)">
         <i class="material-icons">share</i>
       </a>
     </div>
+    <!-- LOGIN NAVBAR -->
+    <div id="nav-header" class="header" ng-if=" ctl.currTemplate == 'partials/login.html'">
+      <span id="nav-title" class="header-title">{{ctl.space.title}}</span>
+      <button id="close" type="button" class="header-sign" ng-click="ctl.closeLog()" aria-label="Close">
+        <span aria-hidden="true"><i class="material-icons" style="font-size:28px; font-weight: bold;">close</i></span>
+      </button>
+      <!--a class="header-sign" ng-click="ctl.closeLog()">X</a-->
+    </div>
     <!-- NAVBAR -->
-    <div id="nav-header" class="header" ng-if="ctl.currTemplate != 'partials/product_detail.html' && ctl.currTemplate != 'partials/post_detail.html' ">
+    <div id="nav-header" class="header" 
+    ng-if="ctl.currTemplate != 'partials/product_detail.html' && ctl.currTemplate != 'partials/post_detail.html' && 
+           ctl.currTemplate != 'partials/login.html'">
       <span id="nav-title" class="header-title">{{ctl.space.title}}</span>
       <a class="header-sign" id="sign-in" ng-if="!ctl.logged" ng-click="ctl.openLog()">Sign In</a>
       <a class="header-icon" id="signed" ng-if="ctl.logged" ng-click="ctl.logOut()"><img src="img/profile.png""></a>
     </div>
 
     <div class="spinner" id="app_spinner">
-      <div class="loading">Loading...</div>
+      <div class="loading">{{ 'loading' | translate }}</div>
       <div class="reload" ng-click="ctl.reload()" style="display: none;">
-        Network error.<br />
-        Click here to retry
+        {{ 'network_err' | translate }}<br />
+        {{ 'click_retry' | translate }}
       </div>
     </div>
     <div class="container {{ctl.no_scroll}}" style="min-height: 100vh; padding-bottom: 80px;">
       <ng-view></ng-view>
 
+<script type="text/ng-template" id="partials/login.html">
+  <div class="main-log-cont">
+  <!--div class="div-close"><a ng-click="ctl.closeLog()" style="margin-right: 3px;">X</a></div-->
+  <div class="intermedio">
+    <div class="log-cont">
+      <label style="font-size:19px; font-weight: bold;">{{ 'login_msg' | translate }}</label>
+      <label style="font-size:16px; font-weight: bold;">Email</label>
+      <input type="email" name="email" id="email" style="border-bottom: solid 3px #aa165f;">
+      <label style="font-size:16px; font-weight: bold;">Password</label>
+      <input type="password" name="password" id="pwd" style="border-bottom: solid 3px #aa165f;">
+    </div>
+    <div class="log-btn">
+      <button class="btn-margin" style="border:none;" ng-click="ctl.logIn()">Log In</button>
+      <button class="btn-margin" style="border:none;" ng-click="ctl.register()">{{ 'register' | translate }}</button>
+    </div>
+  </div>
+</div>
+</script>
 <script type="text/ng-template" id="partials/posts.html">
   <div id="posts" class="page_80">
-  <div class="content_post with-share-button" ng-repeat="p in ctl.space.posts">
+  <div class="content_post shadow p-3 mb-5 bg-white rounded" ng-repeat="p in ctl.space.posts">
     <b>{{p.languages[0].des_annuncio}}</b>
     <img ng-click="ctl.showPost(p)" src="https://www.jewelryvirtualfair.com/public/post-image/{{p.immagine_1}}" class="img-responsive mt-3" alt="JVF">
     
@@ -107,8 +136,8 @@
 <script type="text/ng-template" id="partials/showroom.html">
   <div id="showroom" class="page_80">
   <div class="row">
-    <div class="col-md-4 col-6 with-share-button" ng-repeat="p in ctl.space.products">
-      <div class="href_art">
+    <div class="col-md-4 col-6" ng-repeat="p in ctl.space.products">
+      <div class="href_art shadow p-3  bg-white rounded">
         <img ng-click='ctl.showProduct(p)' src="https://www.jewelryvirtualfair.com/public/prod-page/{{p.photo_galleries[0].nome_foto}}"
         class="img-responsive bordered_f0 " alt="JVF" />
         <h3 style="text-align: center;">{{p.nome_prodotto}}</h3>
@@ -123,7 +152,7 @@
   <div class="owl-item cloned">
     <div class="item" ng-repeat="g in ctl.space.gallery">
       <img src="https://www.jewelryvirtualfair.com/public/gallery-page/{{g.nome_foto}}"
-        class="img-responsive" alt="{{ctl.space.title}}" />
+        class="img-responsive shadow p-3 bg-white rounded" alt="{{ctl.space.title}}" />
       <br />
     </div>
   </div>
@@ -156,19 +185,19 @@
   </div>
   <h5 class="h5_scheda j_height_des" ng-bind-html="ctl.space.info.des_page | to_trusted"></h5>
   <br /><br />
-  <div class="content_fixed_right_scheda" style="position: static; top: unset; width: unset;">
-    <div class="content_dati_scheda">
-        <strong>Nazione:</strong>
+  <div class="content_fixed_right_scheda shadow bg-white rounded" style="position: static; top: unset; width: unset;">
+    <div class="content_dati_scheda" style="border:none;">
+        <strong>{{ 'nation' | translate }}:</strong>
           {{ctl.space.info.nazione || 'Italia'}}<br />
-        <strong>Città:</strong>
+        <strong>{{ 'city' | translate }}:</strong>
           {{ctl.space.info.citta}} - 
           {{ctl.space.info.cap}}<br />
-        <strong>Indirizzo:</strong>
+        <strong>{{ 'address' | translate }}:</strong>
           <a href="" ng-click="ctl.loadMap()">
             {{ctl.space.info.indirizzo}}
           </a><br />
           <br />
-        <strong>Tel.</strong>
+        <strong>{{ 'phone' | translate }}.</strong>
           <a href="tel:{{ctl.space.info.nr_telefono}}">{{ctl.space.info.nr_telefono}}</a>
           <br />
         
@@ -234,27 +263,32 @@
     <div style="margin: 0 auto; max-width: 80%;">
       <div style="margin:10px;">
         <div ng-if="ctl.product_detail.des_estesa != '' && ctl.product_detail.des_estesa != null">
-          <p class="pop-title-desc"><b>Descrizione prodotto</b></p>
+          <p class="pop-title-desc"><b>{{ 'product_des' | translate }}</b></p>
           <p id="desc-content" class="pop-text-content">{{ctl.product_detail.des_estesa}}</p>
         </div>
         <div ng-if="ctl.product_detail.specifiche_text != '' && ctl.product_detail.specifiche_text != null">
-          <p class="pop-title-desc"><b>Specifiche prodotto</b></p>
+          <p class="pop-title-desc"><b>{{ 'product_spc' | translate }}</b></p>
           <p id="desc-content" class="pop-text-content">{{ctl.product_detail.specifiche_text}}</p>
         </div>
+      </div>
+      
+      <div class="page-chat-container">
         <div id="chat-box-container">
-          <p class="pop-title-content" style="color:black;">Hai dubbi su questo prodotto o vuoi acquistarlo? Scrivici!</p>
+          <p class="pop-title-content" style="color:black;">{{ 'doubt' | translate }}</p>
           <div class="input-container-detail">
             <textarea id="msg-input" type="text" name="message" style="grid-area: text;"></textarea>
-            <button ng-click="ctl.send()" class="send-btn" style="grid-area: send;">Send</button>
+            <button ng-click="ctl.send()" class="send-btn" style="grid-area: send;">{{'send' | translate}}</button>
           </div>
         </div>
       </div>
+
     </div>
   </div>
 
+
   <div id="message-sent">
-    <h3><b>Messaggio inviato!</b></h3>
-    <p>Il messaggio è stato inviato, gli operatori di {{ctl.nome_agency}} ti risponderanno al più presto!</p>
+    <h3><b>{{ 'message_sent' | translate }}</b></h3>
+    <p>{{ 'f_msg_sent' | translate }}</p>
   </div>
 </div>
 </script>
@@ -298,29 +332,54 @@
 </script>
     </div>
 
-    <div id="log-pop">
-      <div class="div-close"><a ng-click="ctl.closeLog()" style="margin-right: 3px;">X</a></div>
-      <div class="log-cont">
-        <label style="font-size:20px; font-weight: bold;">Log in to get exclusive features!</label>
-        <label>Email</label>
-        <input type="email" name="email" id="email">
-        <label>Password</label>
-        <input type="password" name="password" id="pwd">
-      </div>
-      <div class="log-btn">
-        <button class="btn-margin" ng-click="ctl.logIn()">Log In</button>
-        <button class="btn-margin" ng-click="ctl.register()">Register</button>
-      </div>
+    <!-- POP UP MESSAGGIO POST LOGIN O LOGOUT -->
+    <div id="log-pop-ok" class="log-pop">
+      <h3><b>{{ 'log-succ' | translate }}</b></h3>
+      <p>{{ 'log-ok' | translate }}</p>
+    </div>
+
+    <div id="log-pop-out" class="log-pop">
+      <h3><b>{{ 'log-out-ti' | translate }}</b></h3>
+      <p>{{ 'log-out' | translate }}</p>
+    </div>
+
+    <div id="log-pop-err" class="log-pop">
+      <h3><b>{{ 'log-error' | translate }}</b></h3>
+      <p>{{ 'log-bad' | translate }}</p>
     </div>
 
     <nav class="fixed-bottom jvf-menu">
       <ul>
-        <li class="menu-posts"   ><a href="#!/posts"    ng-class="ctl.current_view == 'posts'    ? 'active' : ''" id="tar_post">Post</a></li>
-        <li class="menu-showroom"><a href="#!/showroom" ng-class="ctl.current_view == 'showroom' ? 'active' : ''" id="tar_products">Show<br />Room</a></li>
-        <li class="menu-gallery" ><a href="#!/gallery"  ng-class="ctl.current_view == 'gallery'  ? 'active' : ''" id="tar_gallery">Galleria</a></li>
-        <li class="menu-video"   ><a href="#!/video"    ng-class="ctl.current_view == 'video'    ? 'active' : ''" id="tar_video">Video</a></li>
-        <li class="menu-profile" ><a href="#!/profile"  ng-class="ctl.current_view == 'profile'  ? 'active' : ''" id="tar_profile">Profilo</a></li>
-        <li class="menu-chat"    ><a href="#!/chat"     ng-class="ctl.current_view == 'chat'     ? 'active' : ''" id="tar_chat">Chat</a></li>
+        <li class="menu-posts"   >
+          <a href="#!/posts"    ng-class="ctl.current_view == 'posts'    ? 'active' : ''" id="tar_post">
+            {{'post' | translate }}
+          </a>
+        </li>
+        <li class="menu-showroom">
+          <a href="#!/showroom" ng-class="ctl.current_view == 'showroom' ? 'active' : ''" id="tar_products">
+            {{'showroom' | translate | to_trusted}}
+          </a>
+        </li>
+        <li class="menu-gallery" >
+          <a href="#!/gallery"  ng-class="ctl.current_view == 'gallery'  ? 'active' : ''" id="tar_gallery">
+            {{'gallery' | translate}}
+          </a>
+        </li>
+        <li class="menu-video"   >
+          <a href="#!/video"    ng-class="ctl.current_view == 'video'    ? 'active' : ''" id="tar_video">
+            {{'video' | translate}}
+          </a>
+        </li>
+        <li class="menu-profile" >
+          <a href="#!/profile"  ng-class="ctl.current_view == 'profile'  ? 'active' : ''" id="tar_profile">
+            {{'profile' | translate}}
+          </a>
+        </li>
+        <li class="menu-chat"    >
+          <a href="#!/chat"     ng-class="ctl.current_view == 'chat'     ? 'active' : ''" id="tar_chat">
+            {{'chat' | translate}}
+          </a>
+        </li>
       </ul>
     </nav>
   </body>
