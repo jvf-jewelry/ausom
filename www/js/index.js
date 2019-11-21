@@ -2670,7 +2670,7 @@ app.config(function($translateProvider) {
       "city"        : "Città"                                                                       ,
       "address"     : "Indirizzo"                                                                   ,
       "phone"       : "Tel"                                                                         ,
-      "posted"      : "Posted at"                                                                   ,
+      "posted"      : "Postato il"                                                                   ,
       "at"          : "alle"                                                                        ,
       "send"        : "Ask"                                                                       ,
       "product_des" : "Descrizione prodotto"                                                        ,

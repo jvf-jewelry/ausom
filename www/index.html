@@ -11,7 +11,7 @@
     <meta name="format-detection" content="telephone=no" />
 
     <meta name="csrf-param" content="authenticity_token" />
-<meta name="csrf-token" content="SyIrsthz7VgkDu9tNJbZJCNtY9Martb1KZGFxGZ/vBFnzS9fg+tuNHJWnCUkMynUwtQUaobCuhrWtHb9Wp1zOQ==" />
+<meta name="csrf-token" content="3XB72mdKbzK73uWi6vR/jj8/G6o9aGa5YtQeL6lr0VKQMEJ8IIwgEHRHjGK0vx0O8hwGN6KMDAdvZWTIwMRbVA==" />
     
     <link rel="stylesheet" type="text/css" href="css/index.css" />
     <script type="text/javascript" src="cordova.js"></script>
@@ -78,7 +78,7 @@
     <!-- LOGIN NAVBAR -->
     <div id="nav-header" class="header" ng-if=" ctl.currTemplate == 'partials/login.html'">
       <span id="nav-title" class="header-title">{{ctl.space.title}}</span>
-      <button id="close" type="button" class="header-sign" ng-click="ctl.closeLog()" style="color: #fff;opacity: 100;" aria-label="Close">
+      <button id="close" type="button" class="header-sign login-close-btn" ng-click="ctl.closeLog()" aria-label="Close">
         <span aria-hidden="true"><i class="material-icons" style="font-size:28px; font-weight: bold;">close</i></span>
       </button>
       <!--a class="header-sign" ng-click="ctl.closeLog()">X</a-->
@@ -114,8 +114,8 @@
       <input type="password" name="password" id="pwd" style="border-bottom: solid 3px #aa165f;">
     </div>
     <div class="log-btn">
-      <button class="btn-margin loginput" ng-click="ctl.logIn()">Log In</button>
-      <button class="btn-margin loginput" ng-click="ctl.register()">{{ 'register' | translate }}</button>
+      <button class="btn-margin btn-decor" ng-click="ctl.logIn()">Log In</button>
+      <button class="btn-margin btn-decor" ng-click="ctl.register()">{{ 'register' | translate }}</button>
     </div>
   </div>
 </div>
