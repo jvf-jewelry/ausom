@@ -2138,8 +2138,8 @@ app.controller("JvfController", function($scope, $route, $rootScope, $http, $coo
   ctl.APPVERSION = '2.1';
   ctl.is_cordova = !!window.cordova;
   app.is_cordova = !!window.cordova;
-  
-  localStorage.lang = window.navigator.language;
+
+  localStorage.lang = navigator.language;
   // var lang;
 
   // if (navigator && navigator.userAgent && (lang = navigator.userAgent.match(/android.*\W(\w\w)-(\w\w)\W/i))) {
@@ -2626,7 +2626,7 @@ app.controller("JvfController", function($scope, $route, $rootScope, $http, $coo
   else ctl.mainFunction();
 });
 app.config(function($translateProvider) {
-  lang = localStorage.getItem('lang').split("-")[0];
+  lang = localStorage.getItem('lang').split("-")[0] || "en";
   
   // if (document.location.href.includes('localhost')){
   //   lang = "it";
