@@ -2317,26 +2317,13 @@ app.controller("JvfController", function($scope, $route, $rootScope, $http, $coo
   }
 
   ctl.showProduct = function(url){
-    console.log("pre animazione");
-    var $my_location = $location;
-    $("#showroom").animate({
-        opacity: 0.25,
-        //left: "+=100",
-        //width: "toggle"
-        width: $("#animate").parent().width() / 2 - $("#animate").width() / 2
-      }, 
-      400, 
-      function(){
-        ctl.product_detail = url;
-        console.log($my_location);
-        $my_location.path("/product_detail");
-        if (ctl.product_detail.photo_galleries.length > 1){
-          $('.carousel').carousel();
-          $('.carousel').bcSwipe({ threshold: 50 });
-        }
-        ctl.apply();
-      });
-    console.log("post animazione!!!!!");
+    ctl.product_detail = url;
+    $location.path("/product_detail");
+    if (ctl.product_detail.photo_galleries.length > 1){
+      $('.carousel').carousel();
+      $('.carousel').bcSwipe({ threshold: 50 });
+    }
+    ctl.apply();
   };
   
   ctl.closeProduct = function(){
