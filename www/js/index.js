@@ -2139,6 +2139,28 @@ app.controller("JvfController", function($scope, $route, $rootScope, $http, $coo
   ctl.is_cordova = !!window.cordova;
   app.is_cordova = !!window.cordova;
 
+  console.log("USER LANGUAGE => " +  window.navigator.userLanguage);
+  console.log("LANGUAGE E BASTA => " +  window.navigator.language);
+  // localStorage.lang = window.navigator.userLanguage || window.navigator.language;
+  var lang;
+
+  if (navigator && navigator.userAgent && (lang = navigator.userAgent.match(/android.*\W(\w\w)-(\w\w)\W/i))) {
+    lang = lang[1];
+  }
+  if (!lang && navigator) {
+    if (navigator.language) {
+      lang = navigator.language;
+    } else if (navigator.browserLanguage) {
+      lang = navigator.browserLanguage;
+    } else if (navigator.systemLanguage) {
+      lang = navigator.systemLanguage;
+    } else if (navigator.userLanguage) {
+      lang = navigator.userLanguage;
+    }
+    lang = lang.substr(0, 2);
+  }
+  localStorage.lang = lang
+
   ctl.apply = function(){
     setTimeout(function(){ $scope.$apply();}, 50);
   }
@@ -2606,13 +2628,15 @@ app.controller("JvfController", function($scope, $route, $rootScope, $http, $coo
   else ctl.mainFunction();
 });
 app.config(function($translateProvider) {
-  lang = localStorage.getItem('locale') || 'en';
+  lang = localStorage.getItem('lang').split("-")[0]
   
-  if (document.location.href.includes('localhost')){
-    lang = "it";
-  }
-  console.log("GET LOCAL => ", localStorage.getItem('locale'));
+  // if (document.location.href.includes('localhost')){
+  //   lang = "it";
+  // }
+
+  console.log("GET LOCAL => ", localStorage.getItem('lang'));
   console.log("Lingua presa => ", lang);
+  
   $translateProvider
     .preferredLanguage(lang)
     .fallbackLanguage('en')
@@ -2670,7 +2694,7 @@ app.config(function($translateProvider) {
       "city"        : "Città"                                                                       ,
       "address"     : "Indirizzo"                                                                   ,
       "phone"       : "Tel"                                                                         ,
-      "posted"      : "Posted at"                                                                   ,
+      "posted"      : "Postato il"                                                                   ,
       "at"          : "alle"                                                                        ,
       "send"        : "Ask"                                                                       ,
       "product_des" : "Descrizione prodotto"                                                        ,
