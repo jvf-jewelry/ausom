@@ -2138,10 +2138,8 @@ app.controller("JvfController", function($scope, $route, $rootScope, $http, $coo
   ctl.APPVERSION = '2.1';
   ctl.is_cordova = !!window.cordova;
   app.is_cordova = !!window.cordova;
-
-  console.log("USER LANGUAGE => " +  window.navigator.userLanguage);
-  console.log("LANGUAGE E BASTA => " +  window.navigator.language);
-  localStorage.lang = window.navigator.userLanguage || window.navigator.language;
+  
+  localStorage.lang = window.navigator.language;
   // var lang;
 
   // if (navigator && navigator.userAgent && (lang = navigator.userAgent.match(/android.*\W(\w\w)-(\w\w)\W/i))) {
@@ -2628,7 +2626,7 @@ app.controller("JvfController", function($scope, $route, $rootScope, $http, $coo
   else ctl.mainFunction();
 });
 app.config(function($translateProvider) {
-  lang = localStorage.getItem('lang').split("-")[0]
+  lang = localStorage.getItem('lang').split("-")[0];
   
   // if (document.location.href.includes('localhost')){
   //   lang = "it";
@@ -2636,7 +2634,7 @@ app.config(function($translateProvider) {
 
   console.log("GET LOCAL => ", localStorage.getItem('lang'));
   console.log("Lingua presa => ", lang);
-  
+
   $translateProvider
     .preferredLanguage(lang)
     .fallbackLanguage('en')
@@ -2694,9 +2692,9 @@ app.config(function($translateProvider) {
       "city"        : "Città"                                                                       ,
       "address"     : "Indirizzo"                                                                   ,
       "phone"       : "Tel"                                                                         ,
-      "posted"      : "Postato il"                                                                   ,
+      "posted"      : "Postato il"                                                                  ,
       "at"          : "alle"                                                                        ,
-      "send"        : "Ask"                                                                       ,
+      "send"        : "Ask"                                                                         ,
       "product_des" : "Descrizione prodotto"                                                        ,
       "product_spc" : "Specifiche prodotto"                                                         ,
       "doubt"       : "Hai dubbi su questo prodotto o vuoi acquistarlo? Scrivici!"                  ,
