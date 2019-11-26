@@ -2502,12 +2502,12 @@ app.controller("JvfController", function($scope, $route, $rootScope, $http, $coo
       document.getElementById("msg-input").value = "";
     };
     ctl.messageSent();
-    $timeout(function(){$("#chat-box").scrollTop($("#chat-box")[0].scrollHeight);}, 100);
+    $timeout(function(){$("#chat-box").scrollTop($("#chat-box")[0].scrollHeight);}, 115);
   };
 
   ctl.messageSent = function(){
     $('#message-sent').fadeIn();
-    $('#chat-box-container').hide();
+    $('.page-chat-container').hide();
     $timeout(function(){ $('#message-sent').fadeOut(); }, 2000);
   }
 
