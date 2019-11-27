@@ -11,7 +11,7 @@
     <meta name="format-detection" content="telephone=no" />
 
     <meta name="csrf-param" content="authenticity_token" />
-<meta name="csrf-token" content="f/bN2gnyoGdLYWoQLklg7wNZfuTRya3CqbHo4jYOacfaKPfFx/R1QmonxFAtTrHrkUW0HOJBgOIUJkuVTyDjQg==" />
+<meta name="csrf-token" content="pzSF5w6VxXHsWwakGZAkPcH/QqMDGOn7a3XYchzDrCU48iqEhBTx+XETSdGfp6eq6hOUAj/bDfU6fVJQCbBqRA==" />
     
     <link rel="stylesheet" type="text/css" href="css/index.css" />
     <script type="text/javascript" src="cordova.js"></script>
@@ -218,7 +218,7 @@
 </script>
 <script type="text/ng-template" id="partials/chat.html">
   <div id="chat" class="page_80" style="overflow-y: none;">
-  <div id="chat-box" class="chat-box" style="overflow-y: auto;">
+  <div id="chat-box" class="chat-box" style="overflow-y: auto;padding-bottom: 50px;">
     <div ng-repeat="elem in ctl.space.chats">
       <div class="bubble-q" ng-bind-html="elem.question | newlines | to_trusted "></div>
       <div ng-if="elem.answer" class="bubble-a" ng-bind-html="elem.answer  | newlines | to_trusted"></div>
@@ -229,6 +229,22 @@
     <button ng-click="ctl.send()" class="send-btn" style="grid-area: send;">Send</button>
   </div>
 </div>
+
+<script type="text/javascript">
+  var textarea = document.getElementById("msg-input");
+
+  textarea.addEventListener('keydown', autosize);
+               
+  function autosize(){
+    var el = this;
+    var max_height = $('#chat')[0].style.height - $("#chat-box")[0].style.height;
+    setTimeout(function(){
+      el.style.cssText = 'height:auto; padding:0, max-height:' + max_height + ';';
+      el.style.cssText = 'height:' + el.scrollHeight + 'px; max-height: 82px;';
+    },0);
+    $("#chat-box").scrollTop($("#chat-box")[0].scrollHeight);
+  }
+</script>
 </script>
 <script type="text/ng-template" id="partials/product_detail.html">
   <div id="imgpop" class="page_100">
@@ -291,6 +307,22 @@
     <p>{{ 'f_msg_sent' | translate }}</p>
   </div>
 </div>
+
+<script type="text/javascript">
+  var textarea = document.getElementById("msg-input");
+
+  textarea.addEventListener('keydown', autosize);
+               
+  function autosize(){
+    var el = this;
+    setTimeout(function(){
+      el.style.cssText = 'height:auto; padding:0; max-height: 180px!important;';
+      el.style.cssText = 'height:' + el.scrollHeight + 'px; max-height: 180px!important;';
+    },0);
+    $(".page-chat-container")[0].style.cssText = 'max-height:40%;';
+    $("#chat-box-container")[0].style.cssText = 'max-height:40%;';
+  }
+</script>
 </script>
 <script type="text/ng-template" id="partials/post_detail.html">
   <div id="postpop" class="page_100">

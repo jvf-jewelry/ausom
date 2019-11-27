@@ -2193,11 +2193,13 @@ app.controller("JvfController", function($scope, $route, $rootScope, $http, $coo
     if (ctl.current_view != 'product_detail' && ctl.current_view != 'post_detail' && ctl.current_view != 'login') ctl.showNavbar();
     
     $timeout(function(){ 
+      console.log("work?")
       window.scrollTo(0,0);
       if (document.location.href.includes('chat')){
+        console.log("it tries");
         $("#chat-box").scrollTop($("#chat-box")[0].scrollHeight);
       }
-    }, 200);
+    }, 1000);
   };
 
   ctl.hideNavbar = function(){
@@ -2534,7 +2536,6 @@ app.controller("JvfController", function($scope, $route, $rootScope, $http, $coo
     window.open("https://www.jewelryvirtualfair.com/en/", '_blank');
   }
 
-
   ctl.open_with = function(link){
     window.open(link, '_blank',"hideurlbar=no");
   }
@@ -2586,6 +2587,8 @@ app.controller("JvfController", function($scope, $route, $rootScope, $http, $coo
       $rootScope.$on('$locationChangeSuccess', ctl.loadView);
     }, 500);
   };
+
+
 
   if (app.is_cordova) {
     document.addEventListener("deviceready", ctl.mainFunction);
@@ -2640,7 +2643,7 @@ app.config(function($translateProvider) {
       "send"        : "Ask"                                                   ,
       "product_des" : "Product description"                                   ,
       "product_spc" : "Product specifics"                                     ,
-      "doubt"       : "Any question on this product? Get in contact!"         ,
+      "doubt"       : "Any question on this product?"                         ,
       "message_sent": "Message sent!"                                         ,
       "f_msg_sent"  : "The message has been sent, we will soon get in touch!" ,
     })
@@ -2671,7 +2674,7 @@ app.config(function($translateProvider) {
       "send"        : "Ask"                                                                         ,
       "product_des" : "Descrizione prodotto"                                                        ,
       "product_spc" : "Specifiche prodotto"                                                         ,
-      "doubt"       : "Hai dubbi su questo prodotto o vuoi acquistarlo? Scrivici!"                  ,
+      "doubt"       : "Hai dubbi su questo prodotto o vuoi acquistarlo?"                            ,
       "message_sent": "Messaggio inviato!"                                                          ,
       "f_msg_sent"  : "Il messaggio è stato inviato, gli operatori ti risponderanno al più presto!" ,
     })
